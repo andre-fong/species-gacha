@@ -10,52 +10,10 @@ import {
 import React from "react";
 import { useRouter } from "expo-router";
 
-type ItemData = {
-  id: string;
-  title: string;
-};
-
-const DATA: ItemData[] = [
-  {
-    id: "teehee-gottem",
-    title: "capybara",
-  },
-  {
-    id: "lmao-XD",
-    title: "doggologgo",
-  },
-  {
-    id: "omg-slaying-the-game",
-    title: "sexybeast",
-  },
-  {
-    id: "teehee-gottem",
-    title: "capybara",
-  },
-  {
-    id: "lmao-XD",
-    title: "doggologgo",
-  },
-  {
-    id: "omg-slaying-the-game",
-    title: "sexybeast",
-  },
-  {
-    id: "teehee-gottem",
-    title: "capybara",
-  },
-  {
-    id: "lmao-XD",
-    title: "doggologgo",
-  },
-  {
-    id: "omg-slaying-the-game",
-    title: "sexybeast",
-  },
-];
+import species, { Species } from "../../assets/data/species";
 
 type ItemProps = {
-  item: ItemData;
+  item: Species;
   onPress: () => void;
   backgroundColor: string;
   textColor: string;
@@ -66,7 +24,7 @@ const Item = ({ item, onPress, backgroundColor, textColor }: ItemProps) => (
     onPress={onPress}
     style={[styles.item, { backgroundColor }]}
   >
-    <Text style={[styles.title, { color: textColor }]}>{item.title}</Text>
+    <Text style={[styles.title, { color: textColor }]}>{item.name}</Text>
   </TouchableOpacity>
 );
 
@@ -74,7 +32,7 @@ export default function Page() {
   const router = useRouter();
   let toggleColor = false;
 
-  const renderItem = ({ item }: { item: ItemData }) => {
+  const renderItem = ({ item }: { item: Species }) => {
     toggleColor = toggleColor ? false : true;
     const backgroundColor = toggleColor ? "#6e3b6e" : "#f9c2ff";
     const color = toggleColor ? "white" : "black";
@@ -97,9 +55,9 @@ export default function Page() {
       </View>
       <SafeAreaView style={styles.listSection}>
         <FlatList
-          data={DATA}
+          data={species}
           renderItem={renderItem}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item.id.toString()}
         />
       </SafeAreaView>
     </View>
