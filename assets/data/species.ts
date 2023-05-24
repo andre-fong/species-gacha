@@ -1,8 +1,15 @@
-export interface Species {
+export interface SpeciesType {
   id: number;
   name: string;
   scientificName: string;
   status: "vulnerable" | "endangered" | "extinct";
+  ecosystem:
+    | "forest"
+    | "grassland"
+    | "desert"
+    | "tundra"
+    | "freshwater"
+    | "marine";
   location: string;
   description: string;
   link: string;
@@ -11,13 +18,14 @@ export interface Species {
 /**
  * Species data
  */
-const species: Species[] = [
+const species: SpeciesType[] = [
   {
     id: 1,
     name: "Amur Leopard",
     scientificName: "Panthera pardus orientalis",
     status: "endangered",
     location: "Russia",
+    ecosystem: "forest",
     description:
       "The Amur leopard is a leopard subspecies native to the Primorye region of southeastern Russia and northern China. It is listed as Critically Endangered on the IUCN Red List. In 2007, only 19–26 wild Amur leopards were estimated to survive. As of 2015, fewer than 60 individuals were estimated to survive in Russia and China.",
     link: "https://en.wikipedia.org/wiki/Amur_leopard",
@@ -27,6 +35,7 @@ const species: Species[] = [
     name: "Black Rhino",
     scientificName: "Diceros bicornis",
     status: "endangered",
+    ecosystem: "grassland",
     location: "Africa",
     description:
       "The black rhinoceros or hook-lipped rhinoceros is a species of rhinoceros, native to eastern and southern Africa including Angola, Botswana, Kenya, Malawi, Mozambique, Namibia, South Africa, Eswatini, Tanzania, Zambia, and Zimbabwe. Although the rhinoceros is referred to as black, its colors vary from brown to grey.",
@@ -37,6 +46,7 @@ const species: Species[] = [
     name: "Bornean Orangutan",
     scientificName: "Pongo pygmaeus",
     status: "endangered",
+    ecosystem: "forest",
     location: "Borneo",
     description:
       "The Bornean orangutan is a species of orangutan native to the island of Borneo. Together with the Sumatran orangutan and Tapanuli orangutan, it belongs to the only genus of great apes native to Asia. Like the other great apes, orangutans are highly intelligent, displaying advanced tool use and distinct cultural patterns in the wild.",
